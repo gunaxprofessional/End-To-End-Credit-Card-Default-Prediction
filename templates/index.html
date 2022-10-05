@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+input[type=text]{
+  width: 80%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: inline-start;
+  width: 50%;
+  margin-top: 5%;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 5%;
+  }
+}
+</style>
+</head>
+<body>
+
+<h1><center>Credit Card Default Prediction</center></h1>
+<p>Enter the following customer Information to check whether the customer is gonna Default or Not</p>
+
+<div class="container">
+  <form action="{{ url_for('predict')}}"method="post">
+    <div class="row">
+      <div class="col-25">
+        <label for="fname">Total Transaction Count (Last 12 months)</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="fname" name="Total_Trans_Ct" placeholder="Total_Trans_Ct" required = "required">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="lname">Total Transaction Amount (Last 12 months)</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="lname" name="Total_Trans_Amt" placeholder="Total_Trans_Amt" required = "required">
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-25">
+          <label for="lname">Total Revolving Balance on the Credit Card</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Revolving_Bal" placeholder="Total_Revolving_Bal" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">No. of months inactive in the last 12 months</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Months_Inactive_12_mon" placeholder="Months_Inactive_12_mon" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Change in Transaction Count (Q4 over Q1)</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Ct_Chng_Q4_Q1" placeholder="Total_Ct_Chng_Q4_Q1" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Total no. of products held by the customer</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Relationship_Count" placeholder="Total_Relationship_Count" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Average Card Utilization Ratio</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Avg_Utilization_Ratio" placeholder="Avg_Utilization_Ratio" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Change in Transaction Amount (Q4 over Q1)</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Amt_Chng_Q4_Q1" placeholder="Total_Amt_Chng_Q4_Q1" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Credit Limit on the Credit Card</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Credit_Limit" placeholder="Credit_Limit" required = "required">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">No. of Contacts in the last 12 months</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Contacts_Count_12_mon" placeholder="Contacts_Count_12_mon" required = "required">
+        </div>
+      </div>
+
+
+    <div class="row">
+      <input type="submit" value="Submit">
+    </div>
+  </form>
+  <br>
+    <br>
+       {{ prediction_text }}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Credit Card Default Prediction</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Credit Card Default Prediction</h1>
+
+    <form action="{{ url_for('predict')}}"method="post">
+
+      <div class="row">
+        <div class="col-25">
+          <label for="fname">Total Transaction Count (Last 12 months)</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="fname" name="Total_Trans_Ct" placeholder="Total_Trans_Ct">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Total Transaction Amount (Last 12 months)</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Trans_Amt" placeholder="Total_Trans_Amt">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Total Revolving Balance on the Credit Card</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Revolving_Bal" placeholder="Total_Revolving_Bal">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">No. of months inactive in the last 12 months</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Months_Inactive_12_mon" placeholder="Months_Inactive_12_mon">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Change in Transaction Count (Q4 over Q1)</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Ct_Chng_Q4_Q1" placeholder="Total_Ct_Chng_Q4_Q1">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Total no. of products held by the customer</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Relationship_Count" placeholder="Total_Relationship_Count">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Average Card Utilization Ratio</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Avg_Utilization_Ratio" placeholder="Avg_Utilization_Ratio">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Change in Transaction Amount (Q4 over Q1)</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Total_Amt_Chng_Q4_Q1" placeholder="Total_Amt_Chng_Q4_Q1">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">Credit Limit on the Credit Card</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Credit_Limit" placeholder="Credit_Limit">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-25">
+          <label for="lname">No. of Contacts in the last 12 months</label>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Contacts_Count_12_mon" placeholder="Contacts_Count_12_mon">
+        </div>
+      </div>
+
+      <div class="row">
+        <input type="submit" value="Predict">
+      </div>
+    </form>
+    <br>
+    <br>
+       {{ prediction_text }}
+
+  </div>
+
+</body>
+</html>
